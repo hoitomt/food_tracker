@@ -6,6 +6,7 @@
 //  Copyright © 2015 Michael Hoitomt. All rights reserved.
 //
 
+import UIKit
 import XCTest
 @testable import FoodTracker
 
@@ -31,6 +32,18 @@ class FoodTrackerTests: XCTestCase {
         self.measureBlock {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    // MARK: FoodTracker Tests
+    func testMealInitialization() {
+        let potentialItem = Meal(name: "Newest Meal", photo: nil, rating: 5)
+        XCTAssertNotNil(potentialItem)
+        
+        let noName = Meal(name: "", photo: nil, rating: 0)
+        XCTAssertNil(noName, "Empty Name is invalid")
+        
+        let badRating = Meal(name: "Bad Rating", photo: nil, rating: -1)
+        XCTAssertNil(badRating)
     }
     
 }
